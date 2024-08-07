@@ -6,3 +6,9 @@ git-install:
 
 git-uninstall:
 	ansible-playbook playbook2.yaml -i first.ini
+
+update-cache:
+	ansible-playbook playbook3.yaml -i first.ini -t cache
+
+create-user:
+	ansible-playbook playbook3.yaml -i first.ini -t newuser

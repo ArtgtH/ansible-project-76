@@ -1,0 +1,19 @@
+- hosts: selectel
+
+  tasks:
+    - name: clear cache
+      ansible.builtin.apt:
+        update_cache: yes
+      tags: cache
+
+    - name: install nodejs
+      ansible.builtin.apt:
+        name: nodejs npm
+        state: present
+      become: yes
+      tags: nodejs
+
+    - name: create new user
+      ansible.builtin.user:
+        name: artem
+      tags: newuser
