@@ -1,0 +1,14 @@
+- hosts: webservers
+  vars:
+    root_dir: /var/tmp/www
+  tasks:
+    - name: update nginix config
+      ansible.builtin.template:
+        src: templates/nginx.conf.j2
+
+        dest: "{{root_dir}}/nginx.conf"
+
+    - name: update index.html
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: "{{root_dir}}/index.html"
