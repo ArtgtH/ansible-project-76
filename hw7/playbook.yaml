@@ -1,0 +1,31 @@
+- hosts: selectel
+  vars:
+    nginx_port: 80
+    root_dir: /usr/share/nginx/html/
+  tasks:
+    - name: install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: latest
+      become: yes
+
+    - name: update nginx config 2
+      ansible.builtin.template:
+        src: files/nginx.conf
+        dest: /etc/nginx/nginx.conf
+      notify:
+        - restart nginx
+      become: yes
+
+    - name: copy file 2
+      ansible.builtin.template:
+        src: files/index2.html
+        dest: "{{root_dir}}/index.html"
+      become: yes
+
+  handlers:
+    - name: restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+      become: yes
