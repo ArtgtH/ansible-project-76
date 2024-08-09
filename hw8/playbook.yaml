@@ -1,0 +1,8 @@
+- hosts: selectel
+  gather_facts: no
+  tasks:
+    - name: install redis
+      ansible.builtin.apt:
+        name: redis-server
+        state: present
+        update_cache: yes
