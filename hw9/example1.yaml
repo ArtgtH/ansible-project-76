@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+    - name: install packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - redis-server
+        - postgresql
+      become: yes

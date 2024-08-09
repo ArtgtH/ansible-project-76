@@ -1,0 +1,18 @@
+- hosts: all
+  tasks:
+    - name: install packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - redis-server
+        - postgresql
+      become: yes
+    - name: add test users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        state: present
+        groups: root
+      loop:
+        - { name: testuser1, groups: wheel }
+        - { name: testuser2, groups: root }
