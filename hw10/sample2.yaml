@@ -1,0 +1,12 @@
+- hosts: all
+  vars:
+    epic: true
+  tasks:
+    - ansible.builtin.shell: echo "This certainly is epic!"
+      when: epic
+    - ansible.builtin.shell: echo "This certainly isn't epic!"
+      when: not epic
+
+    - ansible.builtin.command: echo {{ item }}
+      loop: [0, 2, 4, 6, 8, 10]
+      when: item > 5

@@ -1,0 +1,6 @@
+- hosts: selectel
+  tasks:
+    - name: echo-if-ubuntu 
+      debug:
+        msg: "Ubuntu is installed."
+      when: ansible_distribution == "Ubuntu"

@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+    - name: shutdown Debian flavored system
+      ansible.builtin.command: /sbin/shutdown -t now
+      when: ansible_os_family == "Debian"
+
+    - name: shutdown CentOs 6 and 7 system
+      ansible.builtin.command: /sbin/shutdown -t now
+      when: ansible_distribution == "CentOS" and
+            (ansible_distribution_major_version == "6" or ansible_distribution_major_version == "7")
