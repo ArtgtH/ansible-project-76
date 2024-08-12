@@ -1,0 +1,19 @@
+- hosts: selectel
+  gather_facts: no
+  tasks:
+    - name: install cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: present
+        update_cache: yes
+      become: yes 
+
+    - name: cowsay
+      ansible.builtin.command: cowsay 'This is server'
+      register: cowsaid
+
+    - name: update index
+      ansible.builtin.template:
+        src: files/index.html
+        dest: "/usr/share/nginx/html/index.html"
+      become: yes

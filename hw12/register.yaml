@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+    - ansible.builtin.shell: ls /Users
+      register: home_dirs
+    - name: add home dirs to cron
+      ansible.builtin.cron:
+        name: "backup_dirs"
+        minute: "0"
+        hour: "5,2"
+        job: "backup /home/{{ item }}"
+      with_items: home_dirs.stdout_lines
+    - ansible.builtin.debug:
+        var: home_dirs.stdout_lines
