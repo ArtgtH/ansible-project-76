@@ -15,3 +15,12 @@ create-user:
 
 install-role:
 	ansible-galaxy install -r requirements.yml
+
+describe-role:
+	ansible-galaxy role init role_name
+
+modules:
+	ansible-galaxy collection list
+
+install-collection:
+	ansible-galaxy collection install nginxinc.nginx_core

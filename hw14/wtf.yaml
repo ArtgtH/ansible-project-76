@@ -1,0 +1,23 @@
+# Пример роли nginxinc.nginx
+
+# ansible-role-nginx/vars/main.yml
+
+# Supported NGINX Open Source distributions
+# https://nginx.org/en/docs/install.html
+nginx_supported_distributions:
+  almalinux:
+    name: AlmaLinux
+    versions: [8, 9]
+    architectures: [x86_64, aarch64, s390x]
+  alpine:
+    name: Alpine Linux
+    versions: [3.15, 3.16, 3.17, 3.18]
+    architectures: [x86_64, aarch64]
+
+# ansible-role-nginx/defaults/main.yml
+
+nginx_type: opensource
+nginx_install_source_build_tools: true
+nginx_install_source_pcre: false
+nginx_install_source_openssl: true
+nginx_install_source_zlib: false

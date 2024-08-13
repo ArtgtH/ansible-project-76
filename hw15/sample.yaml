@@ -1,0 +1,16 @@
+- hosts: all
+  tasks:
+    - name: Создание новой базы данных
+      community.postgresql.postgresql_db:
+        name: hexlet-development
+
+    - name: Создание дампа существующей базы данных
+      community.postgresql.postgresql_db:
+        name: hexlet-production
+        state: dump
+        target: /tmp/hexlet.production.sql
+    
+    - name: Создание таблицы
+      community.postgresql.postgresql_table:
+        db: hexlet-development
+        name: users
