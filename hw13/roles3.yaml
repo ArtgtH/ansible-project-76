@@ -1,0 +1,18 @@
+# roles
+- hosts: all
+  roles:
+    - role: nginxinc.nginx
+      vars:
+        nginx_debug_output: true
+        nginx_modules:
+          - geoip
+
+# import_role
+- hosts: all
+  tasks:
+    - import_role:
+        name: nginxinc.nginx
+      vars:
+        nginx_debug_output: true
+        nginx_modules:
+          - geoip

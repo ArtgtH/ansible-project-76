@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+    - name: Какая-то задача
+      ansible.builtin.shell: # Делаем что-нибудь
+
+    - name: Ставим nginx через роль
+      import_role:
+        name: nginxinc.nginx
+
+    - name: Какая-то задача
+      ansible.builtin.shell: # Делаем что-нибудь
