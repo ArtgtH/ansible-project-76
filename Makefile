@@ -12,3 +12,6 @@ update-cache:
 
 create-user:
 	ansible-playbook playbook3.yaml -i first.ini -t newuser
+
+install-role:
+	ansible-galaxy install -r requirements.yml
